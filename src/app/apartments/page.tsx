@@ -1,6 +1,6 @@
 'use client'
 
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 interface Apartment {
     id: string;
@@ -119,6 +119,20 @@ export default function Apartments() {
     const handleCloseModal = () => {
         setSelectedApartment(null);
     };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === 'Escape') {
+            handleCloseModal();
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
 
     return (
         <main className="flex flex-col items-center justify-center min-h-screen">
