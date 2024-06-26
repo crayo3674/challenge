@@ -136,7 +136,7 @@ export default function Apartments() {
 
     return (
         <main className="flex flex-col items-center justify-center min-h-screen">
-            <div className="bg-gray-200 p-4 rounded-lg">
+            <div className="bg-gray-200 p-8 rounded-lg">
                 <table>
                     <thead>
                     <tr className="bg-white text-gray-600 text-center border-b-2 border-gray-300 sticky top-0">
@@ -156,7 +156,7 @@ export default function Apartments() {
                             <td className="py-4 px-3">{item.location}</td>
                             <td className="py-4 px-3">${item.price}</td>
                             <td className="py-4 px-3 max-w-xs truncate">{item.description}</td>
-                            <td className="py-4 px-3">{item.createdAt}</td>
+                            <td className="py-4 px-3 text-xs">{item.createdAt}</td>
                         </tr>
                     ))}
                     </tbody>
