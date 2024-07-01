@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Full Stack Next.js Developer Challenge
 
-## Getting Started
+## Project Description
+This project aims to create an onboarding process for landlords to manage their apartments and rooms efficiently. It utilizes Next.js for frontend development, Supabase for backend services including database management and storage, and Tailwind CSS for styling.
 
-First, run the development server:
+## Database Structure
+The application integrates with Supabase to manage data. The database schema includes:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Apartments Table
+- **id** (UUID, Primary Key)
+- **name** (String)
+- **location** (String)
+- **price** (Integer)
+- **description** (Text)
+- **createdAt** (Timestamp)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Rooms Table
+- **id** (UUID, Primary Key)
+- **apartmentId** (UUID, Foreign Key references apartments.id)
+- **name** (String)
+- **size** (Integer, in square meters)
+- **equipment** (Text)
+- **imageUrl** (String)
+- **createdAt** (Timestamp)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Local Development Setup
+To run this project locally, follow these steps:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. **Clone the Repository:**
+2. **Install Dependencies:**
+3. **Set Up Environment Variables:**
+- Create a `.env.local` file in the root directory.
+- Add your Supabase credentials:
+  ```
+  NEXT_PUBLIC_SUPABASE_URL=<supabase-url>
+  NEXT_PUBLIC_SUPABASE_ANON_KEY=<supabase-anon-key>
+  ```
 
-## Learn More
+4. **Initialize and Seed the Database:**
+- Use the Supabase dashboard or API to set up the required tables (`apartments` and `rooms`).
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+5. **Run the Development Server:**
+6. **Access the Application:**
+- Open your browser and go to `http://localhost:3000/apartments` to view the list of apartments.
+- Navigate to `http://localhost:3000/apartment/[id]` to view details of a specific apartment.
